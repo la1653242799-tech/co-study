@@ -4,6 +4,22 @@ import hashlib
 import pandas as pd
 from datetime import datetime, date
 import time
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
+# 设置 Google Sheets API 访问权限
+scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+creds = ServiceAccountCredentials.from_json_keyfile_name('path_to_your_service_account.json', scope)
+
+# 连接到 Google Sheets
+client = gspread.authorize(creds)
+
+# 试图打开目标 Google Sheets 文件
+try:
+    spreadsheet = client.open('study_data')  # 替换为你的 Google Sheets 文件名
+    st.success(f"成功连接到 Google Sheets: {spreadsheet.title}")
+except Exception as e:
+    st.error(f"无法连接到 Google Sheets: {str(e)}")
 
 # ==========================================
 # 0. 兼容性设置 (自动处理新旧版本刷新命令)

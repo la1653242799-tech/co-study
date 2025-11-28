@@ -5,7 +5,6 @@ import pandas as pd
 from datetime import datetime, date
 import time
 import gspread
-import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 # 设置访问 Google Sheets 的权限范围
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]

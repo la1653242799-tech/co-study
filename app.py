@@ -4,7 +4,29 @@ import hashlib
 import pandas as pd
 from datetime import datetime, date
 import time
+import gspread
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+# 设置访问 Google Sheets 的权限范围
+scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 
+# 使用服务账号密钥文件进行身份验证
+creds = ServiceAccountCredentials.from_json_keyfile_name(
+    'streamlit-study-479613-be8df28c38f9.json', scope
+)
+
+# 使用 gspread 授权
+client = gspread.authorize(creds)
+
+# 打开指定的 Google Sheets 文件
+spreadsheet = client.open('study_data')
+
+# 获取第一个工作表
+worksheet = spreadsheet.sheet1
+
+# 示例：读取数据并显示
+data = worksheet.get_all_records()  # 获取所有记录
+st.write(data)
 # ==========================================
 # 0. 兼容性设置 (自动处理新旧版本刷新命令)
 # ==========================================

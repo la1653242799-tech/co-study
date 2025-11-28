@@ -12,7 +12,7 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 
 # 使用服务账号密钥文件进行身份验证
 creds = ServiceAccountCredentials.from_json_keyfile_name(
-    './streamlit-study-479613-be8df28c38f9.json', scope
+    './keys/streamlit-study-479613-be8df28c38f9.json', scope
 )
 
 # 使用 gspread 授权
